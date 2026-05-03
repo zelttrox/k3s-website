@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #050f0a;
+    overflow: hidden;
+    font-family: Georgia, serif;
+}
+
+#canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Example content layered above particles */
+.content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 2rem;
+}
+
+.content h1 {
+    font-size: clamp(2rem, 6vw, 5rem);
+    font-weight: 300;
+    color: rgb(111, 218, 161);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.9;
+    text-shadow:
+        0 0 40px rgba(111, 218, 161, 0.4),
+        0 0 80px rgba(111, 218, 161, 0.15);
+}
+
+.content p {
+    margin-top: 1.2rem;
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    color: rgba(111, 218, 161, 0.45);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-family: 'Courier New', monospace;
+}
