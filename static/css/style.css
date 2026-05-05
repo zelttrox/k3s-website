@@ -473,6 +473,117 @@ nav {
 }
 
 
+/* PROJECTS */
+.projects {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+}
+
+.projects-title {
+    font-family: 'Lexend', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.project-card {
+    background: rgba(16, 24, 20, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(74, 178, 128, 0.12);
+    border-top: 1px solid rgba(104, 255, 197, 0.3);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.project-card:hover {
+    border-color: rgba(74, 178, 128, 0.3);
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(74, 178, 128, 0.08);
+}
+
+.project-card-header {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgba(74, 178, 128, 0.08);
+    background: rgba(74, 178, 128, 0.02);
+}
+
+.project-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    padding: 1.2rem 1.4rem 1.4rem;
+    flex: 1;
+}
+
+.project-title {
+    font-family: 'Lexend', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: 0.04em;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+}
+
+.project-desc {
+    font-family: 'Courier New', monospace;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.65;
+    margin: 0;
+    flex: 1;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+}
+
+.project-techs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.tech-badge {
+    font-family: 'Courier New', monospace;
+    font-size: 0.68rem;
+    color: var(--accent-color);
+    background: rgba(78, 196, 139, 0.08);
+    border: 1px solid rgba(78, 196, 139, 0.2);
+    border-radius: 4px;
+    padding: 0.15rem 0.5rem;
+    letter-spacing: 0.02em;
+}
+
+.project-btn {
+    align-self: flex-start;
+    font-size: 0.75rem;
+    padding-block: 0.25rem;
+    padding-inline: 0.75rem;
+    margin-top: auto;
+    gap: 6px;
+}
+
+.project-btn .icon {
+    width: 14px;
+    height: 14px;
+}
+
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
     /* Profile */
@@ -541,6 +652,10 @@ nav {
         width: 180px;
         height: 180px;
     }
+
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 480px) {
@@ -562,6 +677,14 @@ nav {
 
     .hero-card-body {
         padding: 1.5rem 1.2rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .projects {
+        padding: 1.5rem 1rem 3rem;
     }
 }
 
