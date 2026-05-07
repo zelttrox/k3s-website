@@ -24,6 +24,19 @@ window.addEventListener('mouseleave', () => {
     mouse.y = -9999;
 });
 
+/* ── Scroll parallax ── */
+let scrollOffset = 0;
+let targetScrollOffset = 0;
+const PARALLAX_FACTOR = 0.3;
+const SCROLL_SMOOTHING = 0.08;
+window.addEventListener('scroll', () => {
+    targetScrollOffset = window.scrollY * PARALLAX_FACTOR;
+}, { passive: true });
+
+function viewY(y) {
+    return ((y - scrollOffset) % H + H) % H;
+}
+
 /* ── Config ── */
 const PARTICLE_COUNT = 50;
 const BASE_COLOR = { r: 111, g: 218, b: 161 };
@@ -73,7 +86,7 @@ class Particle {
     update() {
         /* ── Cursor repulsion ── */
         const mdx = this.x - mouse.x;
-        const mdy = this.y - mouse.y;
+        const mdy = viewY(this.y) - mouse.y;
         const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
 
         if (mdist < REPEL_RADIUS && mdist > 0) {
@@ -117,30 +130,31 @@ class Particle {
         const g = BASE_COLOR.g;
         const b = BASE_COLOR.b;
         const pulseR = this.radius + Math.sin(this.sizePhase) * this.sizeAmp;
+        const dy = viewY(this.y);
 
         /* Boost glow slightly when being repelled */
         const repelMag = Math.sqrt(this.rx * this.rx + this.ry * this.ry);
         const boost = Math.min(repelMag * 0.08, 0.15);
 
         /* Outer glow */
-        const glowGrad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.glowRadius);
+        const glowGrad = ctx.createRadialGradient(this.x, dy, 0, this.x, dy, this.glowRadius);
         glowGrad.addColorStop(0, `rgba(${r},${g},${b},${(this.alpha * (0.16 + boost)).toFixed(3)})`);
         glowGrad.addColorStop(0.4, `rgba(${r},${g},${b},${(this.alpha * 0.05).toFixed(3)})`);
         glowGrad.addColorStop(1, `rgba(${r},${g},${b},0)`);
 
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.glowRadius, 0, Math.PI * 2);
+        ctx.arc(this.x, dy, this.glowRadius, 0, Math.PI * 2);
         ctx.fillStyle = glowGrad;
         ctx.fill();
 
         /* Core dot */
-        const coreGrad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, pulseR * 2.2);
+        const coreGrad = ctx.createRadialGradient(this.x, dy, 0, this.x, dy, pulseR * 2.2);
         coreGrad.addColorStop(0, `rgba(${Math.min(255, r + 50)},${Math.min(255, g + 20)},${Math.min(255, b + 35)},${((this.alpha + boost) * 0.7).toFixed(3)})`);
         coreGrad.addColorStop(0.5, `rgba(${r},${g},${b},${(this.alpha * 0.45).toFixed(3)})`);
         coreGrad.addColorStop(1, `rgba(${r},${g},${b},0)`);
 
         ctx.beginPath();
-        ctx.arc(this.x, this.y, pulseR * 2.2, 0, Math.PI * 2);
+        ctx.arc(this.x, dy, pulseR * 2.2, 0, Math.PI * 2);
         ctx.fillStyle = coreGrad;
         ctx.fill();
     }
@@ -150,15 +164,17 @@ class Particle {
 function drawConnections(particles) {
     const MAX_DIST = 130;
     for (let i = 0; i < particles.length; i++) {
+        const ay = viewY(particles[i].y);
         for (let j = i + 1; j < particles.length; j++) {
+            const by = viewY(particles[j].y);
             const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
+            const dy = ay - by;
             const dist = Math.sqrt(dx * dx + dy * dy);
             if (dist < MAX_DIST) {
                 const opacity = (1 - dist / MAX_DIST) * 0.12;
                 ctx.beginPath();
-                ctx.moveTo(particles[i].x, particles[i].y);
-                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.moveTo(particles[i].x, ay);
+                ctx.lineTo(particles[j].x, by);
                 ctx.strokeStyle = `rgba(111, 218, 161, ${opacity.toFixed(3)})`;
                 ctx.lineWidth = 0.6;
                 ctx.stroke();
@@ -172,6 +188,8 @@ const particles = Array.from({ length: PARTICLE_COUNT }, () => new Particle());
 
 /* ── Loop ── */
 function animate() {
+    scrollOffset += (targetScrollOffset - scrollOffset) * SCROLL_SMOOTHING;
+
     ctx.clearRect(0, 0, W, H);
 
     const vignette = ctx.createRadialGradient(W / 2, H / 2, H * 0.1, W / 2, H / 2, H * 0.85);
