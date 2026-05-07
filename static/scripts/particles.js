@@ -39,7 +39,7 @@ function viewY(y) {
 
 /* ── Config ── */
 const PARTICLE_COUNT = 50;
-const BASE_COLOR = { r: 111, g: 218, b: 161 };
+const BASE_COLOR = { r: 255, g: 255, b: 255 };
 
 function rand(min, max) { return Math.random() * (max - min) + min; }
 
@@ -175,7 +175,7 @@ function drawConnections(particles) {
                 ctx.beginPath();
                 ctx.moveTo(particles[i].x, ay);
                 ctx.lineTo(particles[j].x, by);
-                ctx.strokeStyle = `rgba(111, 218, 161, ${opacity.toFixed(3)})`;
+                ctx.strokeStyle = `rgba(255, 255, 255, ${opacity.toFixed(3)})`;
                 ctx.lineWidth = 0.6;
                 ctx.stroke();
             }

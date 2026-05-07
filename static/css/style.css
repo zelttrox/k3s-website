@@ -6,7 +6,7 @@
     --navbar-color: rgba(34, 34, 34, 0.201);
     --navbar-text-color: rgb(255, 255, 255);
     --navbar-hover-color: rgb(50, 50, 50);
-    --footer-color: rgb(34, 34, 34);
+    --footer-color: rgb(14, 14, 14);
     --footer-text-color: white;
     --accent-color: rgb(78, 196, 139);
     --accent-color-low: rgb(53, 135, 95);
@@ -24,14 +24,88 @@ body {
     position: relative;
 }
 
-footer {
-    background-color: var(--footer-color);
-    color: var(--footer-text-color);
+/* FOOTER */
+.footer {
+    background: rgba(5, 10, 7, 0.851);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(74, 178, 128, 0.12);
+    margin-top: 2rem;
+}
+
+.footer-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.footer-heading {
+    font-family: 'Lexend', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 1rem;
+}
+
+.footer-nav,
+.footer-contact,
+.footer-alt {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.footer-nav a,
+.footer-contact a {
+    font-family: 'Courier New', monospace;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color 0.15s;
+    width: fit-content;
+}
+
+.footer-nav a:hover,
+.footer-contact a:hover {
+    color: var(--accent-color);
+}
+
+.footer-name {
+    font-family: 'Lexend', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 0.2rem;
+}
+
+.footer-alt span {
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.5;
+}
+
+.footer-available {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: rgba(107, 224, 167, 0.75) !important;
+}
+
+.footer-bottom {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.2rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.25);
     text-align: center;
-    padding: 1rem 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
 }
 
 
@@ -771,6 +845,121 @@ nav {
 }
 
 
+/* CONTACT */
+.contact {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1rem 2rem 6rem;
+}
+
+.contact-inner {
+    background: rgba(16, 24, 20, 0.4);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(74, 178, 128, 0.12);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    padding: 2.5rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+.contact-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.contact-title {
+    font-family: 'Lexend', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+}
+
+.contact-desc {
+    font-family: 'Courier New', monospace;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+    line-height: 1.6;
+    max-width: 320px;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    flex-shrink: 0;
+}
+
+.contact-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 1.2rem;
+    background: rgba(74, 178, 128, 0.04);
+    border: 1px solid rgba(74, 178, 128, 0.12);
+    border-radius: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    min-width: 280px;
+}
+
+.contact-card:hover {
+    background: rgba(74, 178, 128, 0.1);
+    border-color: rgba(74, 178, 128, 0.35);
+    transform: translateX(4px);
+}
+
+.contact-card > svg:first-child {
+    width: 22px;
+    height: 22px;
+    color: var(--accent-color);
+    flex-shrink: 0;
+}
+
+.contact-card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    flex: 1;
+}
+
+.contact-card-label {
+    font-family: 'Lexend', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.contact-card-sub {
+    font-family: 'Courier New', monospace;
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.contact-arrow {
+    width: 14px;
+    height: 14px;
+    color: rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.contact-card:hover .contact-arrow {
+    color: var(--accent-color);
+    transform: translate(2px, -2px);
+}
+
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
     /* Profile */
@@ -857,6 +1046,33 @@ nav {
     .github-title {
         font-size: 1.5rem;
     }
+
+    .contact-inner {
+        flex-direction: column;
+        padding: 2rem 1.5rem;
+        gap: 1.8rem;
+    }
+
+    .contact-links {
+        width: 100%;
+    }
+
+    .contact-card {
+        min-width: unset;
+    }
+
+    .contact-desc {
+        max-width: 100%;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .footer-inner .footer-col:last-child {
+        grid-column: 1 / -1;
+    }
 }
 
 @media (max-width: 480px) {
@@ -886,6 +1102,15 @@ nav {
 
     .projects {
         padding: 1.5rem 1rem 3rem;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-inner .footer-col:last-child {
+        grid-column: auto;
     }
 }
 
