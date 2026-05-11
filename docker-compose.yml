@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: web
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "80:3030"
+    networks:
+      - net
+
+networks:
+  net:
+    driver: bridge

@@ -41,6 +41,5 @@ server.get("/api/github", async function (request, response) {
 
 // Start listening for connections
 server.listen(port, function () {
-    console.log("[Server]", "Server started on port", port)
-    console.log("[Server]", "Now listening..")
+    console.log("Server is up")
 })
