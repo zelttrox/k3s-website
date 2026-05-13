@@ -1,0 +1,9 @@
+{
+    "yaml.schemas": {
+        "kubernetes://schema/v1@service": [
+            "file:///home/enzo/GitHub/website/kubernetes.yaml",
+            "file:///home/enzo/GitHub/website/k3s-deployment.yaml",
+            "file:///home/enzo/GitHub/website/k3s-service.yaml"
+        ]
+    }
+}
