@@ -1,7 +1,9 @@
 // Import modules
 const express = require("express")
 const ejs = require("ejs")
-const { fetchContributions } = require("./src/github")
+
+const github = require("./src/github")
+const kubernetes = require("./src/kubernetes")
 
 // Define server variables
 const server = express()
@@ -30,13 +32,25 @@ server.get("/api/github", async function (request, response) {
         if (githubCache.data && Date.now() < githubCache.expires) {
             return response.json(githubCache.data)
         }
-        const data = await fetchContributions(githubLogin)
+        const data = await github.fetchContributions(githubLogin)
         githubCache = { data, expires: Date.now() + 60 * 60 * 1000 }
         response.json(data)
     } catch (err) {
         console.error("[Github API]", err)
         response.status(500).json({ error: "Failed to fetch contributions" })
     }
+})
+
+// Start K3s resume pod
+server.post("api/cv/start", async (req, res) => {
+    var podName = await kubernetes.CreatePod();
+    res.json({ podName: podName, status: 'starting' });
+})
+
+// Delete K3s resume pod
+server.delete("api/cv/:podName", async (req, res) => {
+    await kubernetes.DeletePod(req.params.podName);
+    res.json({ status: 'deleted' });
 })
 
 // Start listening for connections
