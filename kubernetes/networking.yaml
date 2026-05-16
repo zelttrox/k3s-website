@@ -1,10 +1,44 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: zeltroxvfx@gmail.com
+    privateKeySecretRef:
+      name: letsencrypt-prod-account-key
+    solvers:
+      - http01:
+          ingress:
+            class: traefik
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: website
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - enzo-granana.com
+        - www.enzo-granana.com
+      secretName: website-tls
   rules:
-    - http:
+    - host: enzo-granana.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: website
+                port:
+                  number: 80
+    - host: www.enzo-granana.com
+      http:
         paths:
           - path: /
             pathType: Prefix
