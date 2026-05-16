@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@kubernetes/client-node": "^1.4.0",
+    "@kubernetes/client-node": "^0.22.3",
     "dotenv": "^17.4.2",
     "ejs": "^5.0.2",
     "express": "^5.2.1"
