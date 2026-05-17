@@ -23,13 +23,10 @@ sudo docker image rm website:latest
 
 # Deploy k3s pods and service
 echo "Kubernetes setup.."
+sudo kubectl apply -f https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml
 sudo kubectl apply -f kubernetes/deployment.yaml
 sudo kubectl apply -f kubernetes/service.yaml
 sudo kubectl apply -f kubernetes/networking.yaml
-
-# TLS certificate Kubernetes
-sudo kubectl apply -f https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml
-
 
 # End
 echo "Setup complete"

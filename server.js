@@ -26,6 +26,11 @@ server.get("/", function (request, response) {
     response.render("index", {})
 })
 
+// Contact route handler
+server.get("/contact", function (request, response) {
+    response.render("contact", {})
+})
+
 // GitHub contributions API
 server.get("/api/github", async function (request, response) {
     try {
