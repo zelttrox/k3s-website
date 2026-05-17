@@ -6,6 +6,7 @@ sudo docker image rm website:latest
 # Deploy k3s pods and service
 sudo kubectl apply -f kubernetes/deployment.yaml
 sudo kubectl apply -f kubernetes/service.yaml
+sudo kubectl rollout status deployment/cert-manager-webhook -n cert-manager --timeout=120s
 sudo kubectl apply -f kubernetes/networking.yaml
 
 # End
