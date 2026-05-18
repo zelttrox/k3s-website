@@ -16,6 +16,7 @@ sudo docker system prune -a -f
 sudo docker build -t website:latest .
 sudo docker save website:latest | sudo k3s ctr -n k8s.io images import -
 sudo docker image rm website:latest
+sudo docker builder prune -af
 
 # Deploy k3s pods and service
 sudo kubectl apply -f https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml
