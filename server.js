@@ -1,6 +1,7 @@
 // Import modules
 const express = require("express")
 const ejs = require("ejs")
+const path = require("path")
 
 const github = require("./src/github")
 const kubernetes = require("./src/kubernetes")
@@ -31,6 +32,11 @@ server.get("/contact", function (request, response) {
     response.render("contact", {})
 })
 
+// Projects route handler
+server.get("/projects", function (request, response) {
+    response.render("projects", {})
+})
+
 // GitHub contributions API
 server.get("/api/github", async function (request, response) {
     try {
@@ -46,14 +52,19 @@ server.get("/api/github", async function (request, response) {
     }
 })
 
+// Classic resume PDF
+server.get("/cv/pdf", function (request, response) {
+    response.sendFile(path.join(__dirname, "static", "files", "resume.pdf"))
+})
+
 // Start K3s resume pod
-server.post("api/cv/start", async (req, res) => {
+server.post("/api/cv/start", async (req, res) => {
     var podName = await kubernetes.CreatePod();
     res.json({ podName: podName, status: 'starting' });
 })
 
 // Delete K3s resume pod
-server.delete("api/cv/:podName", async (req, res) => {
+server.delete("/api/cv/:podName", async (req, res) => {
     await kubernetes.DeletePod(req.params.podName);
     res.json({ status: 'deleted' });
 })
