@@ -59,8 +59,19 @@ server.get("/cv/pdf", function (request, response) {
     response.sendFile(path.join(__dirname, "static", "files", "resume.pdf"))
 })
 
-// K3s sessions
-server.use('/cv/:sessionId', createProxyMiddleware({
+// K3s sessions — resolve pod IP via label lookup on cache miss
+async function resolveSession(req, res, next) {
+    const { sessionId } = req.params
+    if (sessions.has(sessionId)) return next()
+    try {
+        sessions.set(sessionId, await kubernetes.GetPodIP(sessionId))
+        next()
+    } catch {
+        res.status(404).send('Session expirée ou introuvable')
+    }
+}
+
+server.use('/cv/:sessionId', resolveSession, createProxyMiddleware({
   target: '',
   router: req => `http://${sessions.get(req.params.sessionId)}:80`,
   pathRewrite: (path, req) => path.replace(`/cv/${req.params.sessionId}`, ''),

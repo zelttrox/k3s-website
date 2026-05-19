@@ -20,19 +20,33 @@ function GenSessionId() {
     return sessionId;
 }
 
+// One-shot lookup of the Running pod IP for a session (null if not ready)
+async function findPodIP(sessionId) {
+    const res = await coreApi.listNamespacedPod(
+        NAMESPACE,
+        undefined, undefined, undefined, undefined,
+        `session=${sessionId}`,
+    );
+    const pod = res.body.items[0];
+    if (pod && pod.status.phase === 'Running' && pod.status.podIP) {
+        return pod.status.podIP;
+    }
+    return null;
+}
+
+// Resolve the pod IP for a session, throw if absent (used by the proxy)
+async function GetPodIP(sessionId) {
+    const ip = await findPodIP(sessionId);
+    if (!ip) throw new Error(`No running pod for session ${sessionId}`);
+    return ip;
+}
+
 // Poll until the Job's pod is Running with an assigned IP, then return it
 async function WaitForPodReady(sessionId) {
     const deadline = Date.now() + POD_READY_TIMEOUT_MS;
     while (Date.now() < deadline) {
-        const res = await coreApi.listNamespacedPod(
-            NAMESPACE,
-            undefined, undefined, undefined, undefined,
-            `session=${sessionId}`,
-        );
-        const pod = res.body.items[0];
-        if (pod && pod.status.phase === 'Running' && pod.status.podIP) {
-            return pod.status.podIP;
-        }
+        const ip = await findPodIP(sessionId);
+        if (ip) return ip;
         await new Promise(r => setTimeout(r, POD_READY_POLL_MS));
     }
     throw new Error(`Pod for session ${sessionId} not ready within ${POD_READY_TIMEOUT_MS}ms`);
@@ -82,4 +96,4 @@ async function DeleteJob(sessionId) {
     );
 }
 
-module.exports = { CreateJob, DeleteJob };
+module.exports = { CreateJob, DeleteJob, GetPodIP };
