@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+:root {
+    --background-color: #050f0a;
+    --accent-color: rgb(78, 196, 139);
+    --accent-color-low: rgb(53, 135, 95);
+    --accent-color-hover: rgb(104, 255, 197);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 20% 10%, rgba(74, 178, 128, 0.08), transparent 55%),
+        radial-gradient(circle at 80% 90%, rgba(74, 178, 128, 0.06), transparent 55%),
+        var(--background-color);
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+}
+
+/* RESUME */
+.resume {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.resume-inner {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.resume-title {
+    font-family: 'Lexend', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+
+.accent {
+    color: var(--accent-color);
+    text-shadow: 0 0 22px rgba(107, 224, 167, 0.3);
+}
+
+.resume-desc {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0 0 1rem;
+    text-align: center;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
+}
+
+/* CARD */
+.resume-card {
+    width: 100%;
+    background: rgba(16, 24, 20, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(74, 178, 128, 0.15);
+    border-top: 1px solid rgba(104, 255, 197, 0.4);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow:
+        0 8px 48px rgba(0, 0, 0, 0.6),
+        0 2px 12px rgba(0, 0, 0, 0.4),
+        0 0 60px rgba(74, 178, 128, 0.213);
+}
+
+.resume-card-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.6rem 1.2rem;
+    border-bottom: 1px solid rgba(74, 178, 128, 0.1);
+    background: rgba(74, 178, 128, 0.03);
+}
+
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot-red    { background: #ff5f57; }
+.dot-yellow { background: #febc2e; }
+.dot-green  { background: #28c840; }
+
+.resume-card-path {
+    margin-left: 0.6rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 0.02em;
+}
+
+.resume-card-body {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.resume-pdf {
+    width: 100%;
+    height: 80vh;
+    border: none;
+    border-radius: 6px;
+    background: #1a1a1a;
+}
+
+/* BUTTON */
+.button {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    padding-block: 0.55rem;
+    padding-inline: 1.2rem;
+    background-color: var(--accent-color-low);
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    gap: 10px;
+    font-weight: bold;
+    border: 3px solid #ffffff4d;
+    outline: none;
+    overflow: hidden;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+    transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+    transform: scale(1.05);
+    border-color: #fff9;
+}
+
+.button:hover .icon {
+    transform: translateY(3px);
+}
+
+.button:hover::before {
+    animation: shine 1.5s ease-out infinite;
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background-image: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 30%,
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0) 70%
+    );
+    top: 0;
+    left: -100px;
+    opacity: 0.6;
+}
+
+@keyframes shine {
+    0%   { left: -100px; }
+    60%  { left: 100%; }
+    to   { left: 100%; }
+}
+
+.resume-btn {
+    margin-top: 0.5rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    body {
+        padding: 1.5rem 1rem;
+    }
+
+    .resume-title {
+        font-size: 1.8rem;
+    }
+
+    .resume-pdf {
+        height: 70vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .resume-title {
+        font-size: 1.5rem;
+    }
+
+    .resume-pdf {
+        height: 60vh;
+    }
+}

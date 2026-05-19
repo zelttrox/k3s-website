@@ -1,16 +1,12 @@
 async function StartResume() {
     const response = await fetch('/api/cv/start', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    }
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
     });
-    if (!response.ok) {throw new Error(`HTTP ${response.status}`)};
-    const data = await response.json();
-    return data;
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const { sessionId } = await response.json();
+    window.location.href = `/cv/${sessionId}/`;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const resumeButton = document.getElementById('resume-button');
-    resumeButton.addEventListener('click', StartResume);
-  })
+document.querySelectorAll('#resume-button').forEach(btn =>
+    btn.addEventListener('click', StartResume));

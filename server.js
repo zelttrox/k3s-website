@@ -2,6 +2,7 @@
 const express = require("express")
 const ejs = require("ejs")
 const path = require("path")
+const proxy = require("http-proxy-middleware")
 
 const github = require("./src/github")
 const kubernetes = require("./src/kubernetes")
@@ -9,6 +10,7 @@ const kubernetes = require("./src/kubernetes")
 // Define server variables
 const server = express()
 const port = 3030
+const sessions = new Map()
 const githubLogin = "zelttrox"
 let githubCache = { data: null, expires: 0 }
 
@@ -57,15 +59,24 @@ server.get("/cv/pdf", function (request, response) {
     response.sendFile(path.join(__dirname, "static", "files", "resume.pdf"))
 })
 
+// K3s sessions
+server.use('/cv/:sessionId', createProxyMiddleware({
+  target: '',
+  router: req => `http://${sessions.get(req.params.sessionId)}:80`,
+  pathRewrite: (path, req) => path.replace(`/cv/${req.params.sessionId}`, ''),
+  changeOrigin: true,
+}))
+
 // Start K3s resume pod
 server.post("/api/cv/start", async (req, res) => {
-    var podName = await kubernetes.CreatePod();
-    res.json({ podName: podName, status: 'starting' });
+    const {sessionId, podIP} = await kubernetes.CreateJob();
+    sessions.set(sessionId, podIP)
+    res.json({ sessionId })
 })
 
 // Delete K3s resume pod
 server.delete("/api/cv/:podName", async (req, res) => {
-    await kubernetes.DeletePod(req.params.podName);
+    await kubernetes.DeleteJob(req.params.podName);
     res.json({ status: 'deleted' });
 })
 
