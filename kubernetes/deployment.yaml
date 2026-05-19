@@ -14,7 +14,7 @@ rules:
     verbs: ["get", "list"]
   - apiGroups: ["batch"]
     resources: ["jobs"]
-    verbs: ["create", "get", "delete"]
+    verbs: ["create", "get", "list", "delete"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -23,6 +23,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: website
+    namespace: default
 roleRef:
   kind: Role
   name: website-resume-pods
