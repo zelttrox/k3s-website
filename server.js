@@ -78,8 +78,12 @@ server.use('/cv/:sessionId', resolveSession, createProxyMiddleware({
   changeOrigin: true,
 }))
 
-// Start K3s resume pod
+// Start K3s resume pod if < 15
 server.post("/api/cv/start", async (req, res) => {
+    if (await kubernetes.CountResumePods() >= 15) {
+        server.response.redirect("/cv/pdf"); 
+        return;
+    }
     const {sessionId, podIP} = await kubernetes.CreateJob();
     sessions.set(sessionId, podIP)
     res.json({ sessionId })

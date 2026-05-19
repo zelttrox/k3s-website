@@ -96,4 +96,14 @@ async function DeleteJob(sessionId) {
     );
 }
 
-module.exports = { CreateJob, DeleteJob, GetPodIP };
+// Count the amount of resume pods
+async function CountResumePods() {
+    const res = await batchApi.listNamespacedJob(
+        NAMESPACE,
+        undefined, undefined, undefined, undefined,
+        'app=resume',
+    );
+    return res.body.items.filter(j => !j.status.succeeded && !j.status.failed).length;
+}
+
+module.exports = { CreateJob, DeleteJob, GetPodIP, CountResumePods };

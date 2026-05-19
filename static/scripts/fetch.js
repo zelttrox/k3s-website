@@ -9,4 +9,15 @@ async function StartResume() {
 }
 
 document.querySelectorAll('#resume-button').forEach(btn =>
-    btn.addEventListener('click', StartResume));
+    btn.addEventListener('click', () => {
+        const originalBg = btn.style.background;
+        btn.disabled = true;
+        btn.style.pointerEvents = 'none';
+        btn.style.background = '#888';
+        setTimeout(() => {
+            btn.disabled = false;
+            btn.style.pointerEvents = '';
+            btn.style.background = originalBg;
+        }, 5000);
+        StartResume();
+    }));
