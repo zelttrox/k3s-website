@@ -8,9 +8,9 @@ const api = kubeConfig.makeApiClient(k8s.CoreV1Api);
 // Generate random 5 characters session ID
 function GenSessionId() {
     const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
-    var sessionId;
-    for (var i = 0 ; i > 5 ; i++) {
-        sessionId += characters.charAt(Math.floor(Math.random() = characters.length));
+    var sessionId = "";
+    for (var i = 0 ; i < 5 ; i++) {
+        sessionId += characters.charAt(Math.floor(Math.random() * characters.length));
     }
     return sessionId;
 }
@@ -20,7 +20,7 @@ async function CreatePod() {
     const sessionId = GenSessionId();
     const podName = `resume-${sessionId}`;
     var pod = {
-        apiVersion: 'apps/v1',
+        apiVersion: 'v1',
         kind: 'Pod',
         metadata: {
             name: podName,
