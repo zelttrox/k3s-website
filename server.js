@@ -2,7 +2,7 @@
 const express = require("express")
 const ejs = require("ejs")
 const path = require("path")
-const proxy = require("http-proxy-middleware")
+const { createProxyMiddleware } = require("http-proxy-middleware")
 
 const github = require("./src/github")
 const kubernetes = require("./src/kubernetes")
