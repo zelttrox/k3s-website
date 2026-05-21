@@ -21,7 +21,9 @@
                     <span class="resume-card-path">~/enzo-granana/cv.pdf</span>
                 </div>
                 <div class="resume-card-body">
-                    <embed src="resume.pdf" type="application/pdf" class="resume-pdf" />
+                    <div id="pdf-render" class="resume-pdf">
+                        <span class="pdf-loading">Chargement du CV…</span>
+                    </div>
                 </div>
             </div>
 
@@ -35,6 +37,56 @@
             </a>
         </div>
     </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        // Render the PDF to canvas with PDF.js — <embed>/<object> aren't
+        // supported by mobile browsers (they show "Plug-in not supported").
+        (function () {
+            const container = document.getElementById('pdf-render');
+            if (!container || !window.pdfjsLib) return;
+
+            pdfjsLib.GlobalWorkerOptions.workerSrc =
+                'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+            async function renderPdf() {
+                try {
+                    const pdf = await pdfjsLib.getDocument('resume.pdf').promise;
+                    container.innerHTML = '';
+                    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                    for (let num = 1; num <= pdf.numPages; num++) {
+                        const page = await pdf.getPage(num);
+                        const unscaled = page.getViewport({ scale: 1 });
+                        const scale = container.clientWidth / unscaled.width;
+                        const viewport = page.getViewport({ scale: scale * dpr });
+
+                        const canvas = document.createElement('canvas');
+                        canvas.className = 'pdf-page';
+                        canvas.width = viewport.width;
+                        canvas.height = viewport.height;
+                        container.appendChild(canvas);
+
+                        await page.render({
+                            canvasContext: canvas.getContext('2d'),
+                            viewport,
+                        }).promise;
+                    }
+                } catch (err) {
+                    console.error('[CV] Failed to render PDF', err);
+                    container.innerHTML =
+                        '<a href="resume.pdf" class="pdf-fallback" target="_blank" rel="noopener">Ouvrir le CV en plein écran</a>';
+                }
+            }
+
+            renderPdf();
+            // Re-render on resize so the pages stay crisp at the new width
+            let resizeTimer;
+            window.addEventListener('resize', function () {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(renderPdf, 250);
+            });
+        })();
+    </script>
 
 </body>
 </html>
