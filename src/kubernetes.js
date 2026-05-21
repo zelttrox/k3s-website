@@ -96,6 +96,33 @@ async function DeleteJob(sessionId) {
     );
 }
 
+// List all pods in the namespace (like `kubectl get pods`)
+async function ListPods() {
+    const res = await coreApi.listNamespacedPod(NAMESPACE);
+    return res.body.items.map(pod => {
+        const containers = pod.status.containerStatuses || [];
+        const ready = containers.filter(c => c.ready).length;
+        const restarts = containers.reduce((sum, c) => sum + c.restartCount, 0);
+        const start = pod.status.startTime || pod.metadata.creationTimestamp;
+        return {
+            name: pod.metadata.name,
+            ready: `${ready}/${containers.length || pod.spec.containers.length}`,
+            status: pod.status.phase,
+            restarts,
+            age: start ? FormatAge(start) : '—',
+        };
+    });
+}
+
+// Format a timestamp into a compact age string (like kubectl: 5m, 2h, 3d)
+function FormatAge(timestamp) {
+    const seconds = Math.floor((Date.now() - new Date(timestamp).getTime()) / 1000);
+    if (seconds < 60) return `${seconds}s`;
+    if (seconds < 3600) return `${Math.floor(seconds / 60)}m`;
+    if (seconds < 86400) return `${Math.floor(seconds / 3600)}h`;
+    return `${Math.floor(seconds / 86400)}d`;
+}
+
 // Count the amount of resume pods
 async function CountResumePods() {
     const res = await batchApi.listNamespacedJob(
@@ -106,4 +133,4 @@ async function CountResumePods() {
     return res.body.items.filter(j => !j.status.succeeded && !j.status.failed).length;
 }
 
-module.exports = { CreateJob, DeleteJob, GetPodIP, CountResumePods };
+module.exports = { CreateJob, DeleteJob, GetPodIP, ListPods, CountResumePods };

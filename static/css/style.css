@@ -1400,3 +1400,106 @@ nav {
     color: rgb(107, 224, 167);
     letter-spacing: 1px;
 }
+
+/* ---- Pods du serveur ---- */
+.pods {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1rem 2rem 4rem;
+}
+
+.pods-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.pods-title {
+    font-family: 'Lexend', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+}
+
+.pods-refresh {
+    padding: 0.5rem 1.1rem;
+    font-size: 0.85rem;
+}
+
+.pods-refresh:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.pods-card {
+    background: rgba(16, 24, 20, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(74, 178, 128, 0.12);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+.pods-card-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.6rem 1.2rem;
+    border-bottom: 1px solid rgba(74, 178, 128, 0.1);
+    background: rgba(74, 178, 128, 0.03);
+}
+
+.pods-prompt {
+    margin-left: 0.6rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.pods-terminal {
+    display: block;
+    padding: 1.2rem 1.4rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75);
+    overflow-x: auto;
+    white-space: pre;
+    transition: opacity 0.2s ease;
+}
+
+.pods-terminal.loading {
+    opacity: 0.4;
+}
+
+.pods-cmd {
+    display: block;
+    color: var(--accent-color-hover);
+    margin-bottom: 0.6rem;
+}
+
+.pods-row {
+    display: block;
+}
+
+.pods-head {
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.04em;
+}
+
+.pods-status.ok   { color: #28c840; }
+.pods-status.warn { color: #febc2e; }
+.pods-status.err  { color: #ff5f57; }
+
+.pods-loading,
+.pods-empty {
+    color: rgba(255, 255, 255, 0.45);
+    font-style: italic;
+}

@@ -54,6 +54,17 @@ server.get("/api/github", async function (request, response) {
     }
 })
 
+// List server pods (like `kubectl get pods`)
+server.get("/api/pods", async function (request, response) {
+    try {
+        const pods = await kubernetes.ListPods()
+        response.json(pods)
+    } catch (err) {
+        console.error("[Pods API]", err)
+        response.status(500).json({ error: "Failed to list pods" })
+    }
+})
+
 // Classic resume PDF
 server.get("/cv/pdf", function (request, response) {
     response.sendFile(path.join(__dirname, "static", "files", "resume.pdf"))
