@@ -39,7 +39,7 @@ function viewY(y) {
 
 /* ── Config ── */
 const PARTICLE_COUNT = 50;
-const BASE_COLOR = { r: 255, g: 255, b: 255 };
+const BASE_COLOR = { r: 31, g: 145, b: 95 };
 
 function rand(min, max) { return Math.random() * (max - min) + min; }
 
@@ -171,11 +171,11 @@ function drawConnections(particles) {
             const dy = ay - by;
             const dist = Math.sqrt(dx * dx + dy * dy);
             if (dist < MAX_DIST) {
-                const opacity = (1 - dist / MAX_DIST) * 0.12;
+                const opacity = (1 - dist / MAX_DIST) * 0.18;
                 ctx.beginPath();
                 ctx.moveTo(particles[i].x, ay);
                 ctx.lineTo(particles[j].x, by);
-                ctx.strokeStyle = `rgba(255, 255, 255, ${opacity.toFixed(3)})`;
+                ctx.strokeStyle = `rgba(31, 145, 95, ${opacity.toFixed(3)})`;
                 ctx.lineWidth = 0.6;
                 ctx.stroke();
             }
@@ -193,8 +193,8 @@ function animate() {
     ctx.clearRect(0, 0, W, H);
 
     const vignette = ctx.createRadialGradient(W / 2, H / 2, H * 0.1, W / 2, H / 2, H * 0.85);
-    vignette.addColorStop(0, 'rgba(5,20,12,0)');
-    vignette.addColorStop(1, 'rgba(2,8,5,0.65)');
+    vignette.addColorStop(0, 'rgba(238,242,239,0)');
+    vignette.addColorStop(1, 'rgba(210,225,217,0.6)');
     ctx.fillStyle = vignette;
     ctx.fillRect(0, 0, W, H);
 

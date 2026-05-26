@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Akt:wght@100..900&display=swap');
 
 :root {
-    --background-color: #050f0a;
-    --accent-color: rgb(78, 196, 139);
-    --accent-color-low: rgb(53, 135, 95);
-    --accent-color-hover: rgb(104, 255, 197);
+    --background-color: #eef2ef;
+    --text-color: #16241d;
+    --text-muted: rgba(22, 36, 29, 0.62);
+    --accent-color: rgb(31, 145, 95);
+    --accent-color-low: rgb(38, 140, 92);
+    --accent-color-hover: rgb(18, 110, 72);
 }
 
 * {
@@ -16,10 +19,10 @@
 body {
     min-height: 100vh;
     background:
-        radial-gradient(circle at 20% 10%, rgba(74, 178, 128, 0.08), transparent 55%),
-        radial-gradient(circle at 80% 90%, rgba(74, 178, 128, 0.06), transparent 55%),
+        radial-gradient(circle at 20% 10%, rgba(74, 178, 128, 0.12), transparent 55%),
+        radial-gradient(circle at 80% 90%, rgba(74, 178, 128, 0.1), transparent 55%),
         var(--background-color);
-    color: white;
+    color: var(--text-color);
     font-family: Arial, sans-serif;
     display: flex;
     align-items: center;
@@ -47,41 +50,38 @@ body {
     font-family: 'Lexend', sans-serif;
     font-size: 2.4rem;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--text-color);
     margin: 0;
     letter-spacing: -0.02em;
-    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.8);
     text-align: center;
 }
 
 .accent {
     color: var(--accent-color);
-    text-shadow: 0 0 22px rgba(107, 224, 167, 0.3);
 }
 
 .resume-desc {
-    font-family: 'Courier New', monospace;
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Akt', sans-serif;
+    font-size: 1rem;
+    color: var(--text-muted);
     margin: 0 0 1rem;
     text-align: center;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
 }
 
 /* CARD */
 .resume-card {
     width: 100%;
-    background: rgba(16, 24, 20, 0.45);
+    background: rgba(255, 255, 255, 0.72);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(74, 178, 128, 0.15);
-    border-top: 1px solid rgba(104, 255, 197, 0.4);
+    border: 1px solid rgba(74, 178, 128, 0.22);
+    border-top: 1px solid rgba(31, 145, 95, 0.45);
     border-radius: 14px;
     overflow: hidden;
     box-shadow:
-        0 8px 48px rgba(0, 0, 0, 0.6),
-        0 2px 12px rgba(0, 0, 0, 0.4),
-        0 0 60px rgba(74, 178, 128, 0.213);
+        0 8px 48px rgba(40, 80, 60, 0.12),
+        0 2px 12px rgba(40, 80, 60, 0.08),
+        0 0 60px rgba(74, 178, 128, 0.1);
 }
 
 .resume-card-header {
@@ -89,8 +89,8 @@ body {
     align-items: center;
     gap: 6px;
     padding: 0.6rem 1.2rem;
-    border-bottom: 1px solid rgba(74, 178, 128, 0.1);
-    background: rgba(74, 178, 128, 0.03);
+    border-bottom: 1px solid rgba(74, 178, 128, 0.14);
+    background: rgba(74, 178, 128, 0.05);
 }
 
 .dot { width: 10px; height: 10px; border-radius: 50%; }
@@ -100,9 +100,9 @@ body {
 
 .resume-card-path {
     margin-left: 0.6rem;
-    font-family: 'Courier New', monospace;
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.35);
+    font-family: 'Akt', sans-serif;
+    font-size: 1rem;
+    color: rgba(22, 36, 29, 0.42);
     letter-spacing: 0.02em;
 }
 
@@ -119,7 +119,7 @@ body {
     height: auto;
     border: none;
     border-radius: 6px;
-    background: #1a1a1a;
+    background: #ffffff;
 }
 
 /* BUTTON */
