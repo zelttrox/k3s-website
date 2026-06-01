@@ -2,443 +2,48 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Enzo Granana — Étudiant en informatique à la recherche d'une alternance NetDevOps / Admin système pour septembre 2026 sur Montpellier.">
-    <title>Enzo Granana - Projets </title>
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <link rel="stylesheet" href="css/background.css">
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Enzo Granana — Tous mes projets personnels et académiques en infra, cloud, devops et développement.">
+  <title>Enzo Granana - Projets</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="css/background.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-
-  <canvas id="background"></canvas>
 
   <header>
     <%- include('../static/components/navbar', {}) %>
   </header>
 
-  <br>
-  <br>
-
   <main>
-
-    <br><br><br><br>
-
-    <section class="projects">
-      <h2 class="projects-title">Tous mes <span class="accent">projets</span></h2>
-
-      <div class="projects-grid">
-
-        <div class="project-card">
-          <div class="project-card-body">
-            <h3 class="project-title">VLab</h3>
-            <p class="project-desc">Logiciel de simulation d'infrastructures réseaux sur environnement virtuel basé sur
-              Docker Engine et développé en TypeScript avec Dockerode.</p>
-            <div class="project-techs">
-              <span class="tech-badge">Docker Engine</span>
-              <span class="tech-badge">Shell virtuel</span>
-              <span class="tech-badge">Dockerode</span>
-              <span class="tech-badge">TypeScript</span>
-            </div>
-            <a href="https://github.com/zelttrox/vlab" target="_blank" class="button project-btn">
-              Voir sur GitHub
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-          </div>
+    <section class="projects-page">
+      <div class="projects-page-inner">
+        <h1 class="projects-page-title">Mes <span class="accent">projets</span></h1>
+        <div class="projects-page-grid">
+          <% projects.forEach(function (project) { %>
+            <article class="glow-card">
+              <a href="/projects/<%= project.slug %>" class="glow-card-link" aria-label="<%= project.title %>"></a>
+              <h3 class="project-title"><%= project.title %></h3>
+              <p class="project-desc"><%= project.description %></p>
+              <div class="project-techs">
+                <% project.technologies.forEach(function (tech) { %>
+                  <span class="tech-badge"><%= tech %></span>
+                <% }) %>
+              </div>
+              <a href="<%= project.github %>" target="_blank" class="project-link">Voir sur GitHub →</a>
+            </article>
+          <% }) %>
         </div>
-
-        <div class="project-card">
-          <div class="project-card-body">
-            <h3 class="project-title">Neo Cobol</h3>
-            <p class="project-desc">Nouveau langage de programmation qui modernise le Cobol, intégrant un moteur de
-              conversion automatique de Cobol classique en Neo Cobol, fait en Go et TS.</p>
-            <div class="project-techs">
-              <span class="tech-badge">Cobol</span>
-              <span class="tech-badge">Tokenizing</span>
-              <span class="tech-badge">Compilation</span>
-              <span class="tech-badge">Arbre syntaxique</span>
-            </div>
-            <a href="https://github.com/zelttrox/neo-cobol" target="_blank" class="button project-btn">
-              Voir sur GitHub
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card-body">
-            <h3 class="project-title">Cloud K3s</h3>
-            <p class="project-desc">Node K3s hébergé sur VM GCloud avec load-balancing entre 3 pods web et gestion de pods à la demande. Gestion de conteneurs avec Docker (Ce site).</p>
-            <div class="project-techs">
-              <span class="tech-badge">GCloud</span>
-              <span class="tech-badge">Kubernetes</span>
-              <span class="tech-badge">Docker</span>
-              <span class="tech-badge">IaC</span>
-              <span class="tech-badge">ufw</span>
-              <span class="tech-badge">Express</span>
-            </div>
-            <a href="https://github.com/zelttrox/k3s-website" target="_blank" class="button project-btn">
-              Voir sur GitHub
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card-body">
-            <h3 class="project-title">Peer-to-peer</h3>
-            <p class="project-desc">Outil CLI de transfert de fichiers ultra rapide optimisé grâce à une connexion
-              directe sans serveur intermédiaire codé en Go.</p>
-            <div class="project-techs">
-              <span class="tech-badge">Go networking</span>
-              <span class="tech-badge">Shell</span>
-              <span class="tech-badge">Sockets</span>
-              <span class="tech-badge">Protocole TCP</span>
-              <span class="tech-badge">Arch AUR</span>
-            </div>
-            <a href="https://github.com/zelttrox/peer-to-peer" target="_blank" class="button project-btn">
-              Voir sur GitHub
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card-body">
-            <h3 class="project-title">KRE Agency</h3>
-            <p class="project-desc">Infrastructure pour site web avec Windows AD et pare-feu Iptables pour agence de 12
-              sites connectées à un siège par tunnel VPN.</p>
-            <div class="project-techs">
-              <span class="tech-badge">Wireguard</span>
-              <span class="tech-badge">Windows AD</span>
-              <span class="tech-badge">Nginx</span>
-              <span class="tech-badge">Docker</span>
-              <span class="tech-badge">Iptables</span>
-              <span class="tech-badge">React</span>
-            </div>
-            <a href="https://github.com/Pl0um/y-plaza" target="_blank" class="button project-btn">
-              Voir sur GitHub
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card-body">
-            <h3 class="project-title">Infra CMS</h3>
-            <p class="project-desc">Infrastructure web sécurisée, optimisée et scalable pour CMS (Strapi) avec pare-feu
-              et système de load-balancing.</p>
-            <div class="project-techs">
-              <span class="tech-badge">Strapi</span>
-              <span class="tech-badge">Nginx</span>
-              <span class="tech-badge">Docker</span>
-              <span class="tech-badge">Supabase</span>
-            </div>
-            <a href="https://github.com/zelttrox/cloud-cms" target="_blank" class="button project-btn">
-              Voir sur GitHub
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card-body">
-            <h3 class="project-title">Infra VPN</h3>
-            <p class="project-desc">VPN Wireguard hébergé sur VM Azure avec script d'installation et QR code pour
-              mobile.</p>
-            <div class="project-techs">
-              <span class="tech-badge">Wireguard</span>
-              <span class="tech-badge">Azure VM</span>
-              <span class="tech-badge">Scripting</span>
-            </div>
-            <a href="https://github.com/zelttrox/infra-vpn" target="_blank" class="button project-btn">
-              Voir sur GitHub
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card-body">
-            <h3 class="project-title">Music App</h3>
-            <p class="project-desc">Web app de musique en Node.js conteneurisée avec Docker avec base de données et page
-              admin back-office.</p>
-            <div class="project-techs">
-              <span class="tech-badge">Node.js</span>
-              <span class="tech-badge">Express</span>
-              <span class="tech-badge">Docker</span>
-              <span class="tech-badge">SQLite</span>
-            </div>
-            <a href="https://github.com/zelttrox/music-app" target="_blank" class="button project-btn">
-              Voir sur GitHub
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card-body">
-            <h3 class="project-title">ChatGPT CLI</h3>
-            <p class="project-desc">Petit script Python pour parler aux modèles ChatGPT directement dans le terminal en
-              utilisant l'API OpenAI.</p>
-            <div class="project-techs">
-              <span class="tech-badge">Python</span>
-              <span class="tech-badge">CLI</span>
-              <span class="tech-badge">IA</span>
-              <span class="tech-badge">OpenAI</span>
-            </div>
-            <a href="https://github.com/zelttrox/chatgpt-cli" target="_blank" class="button project-btn">
-              Voir sur GitHub
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card-body">
-            <h3 class="project-title">Multi Cloud</h3>
-            <p class="project-desc">Site web basique déployé simultanément sur 3 Cloud différents avec un CDN (AWS, Azure,
-              Google Cloud).</p>
-            <div class="project-techs">
-              <span class="tech-badge">AWS</span>
-              <span class="tech-badge">Azure</span>
-              <span class="tech-badge">GCloud</span>
-              <span class="tech-badge">CDN</span>
-            </div>
-            <a href="https://github.com/zelttrox/multi-cloud" target="_blank" class="button project-btn">
-              Voir sur GitHub
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card-body">
-            <h3 class="project-title">Groupie Tracker</h3>
-            <p class="project-desc">Site web en Go pour trouver des artistes musicaux à partir d'une API importée.</p>
-            <div class="project-techs">
-              <span class="tech-badge">Go web</span>
-              <span class="tech-badge">API</span>
-            </div>
-            <a href="https://github.com/zelttrox/groupie-tracker" target="_blank" class="button project-btn">
-              Voir sur GitHub
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card-body">
-            <h3 class="project-title">Bank Transactions</h3>
-            <p class="project-desc">Programme de gestion de transactions bancaires écrit en Cobol sur z/OS.</p>
-            <div class="project-techs">
-              <span class="tech-badge">Cobol</span>
-              <span class="tech-badge">z/OS</span>
-              <span class="tech-badge">IBM i</span>
-            </div>
-            <a href="https://github.com/zelttrox/bank-transactions" target="_blank" class="button project-btn">
-              Voir sur GitHub
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card-body">
-            <h3 class="project-title">Arcatia</h3>
-            <p class="project-desc">Jeu de chat 2D RPG de début de 1ère année d'informatique écrit en Go avec la librairie
-              Raylib.</p>
-            <div class="project-techs">
-              <span class="tech-badge">Go</span>
-              <span class="tech-badge">Raylib</span>
-            </div>
-            <a href="https://github.com/zelttrox/arcatia" target="_blank" class="button project-btn">
-              Voir sur GitHub
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card-body">
-            <h3 class="project-title">Auraria</h3>
-            <p class="project-desc">Jeu de survie Open World 3D sur une planète alien nommée Auraria développé sur
-              Unity.</p>
-            <div class="project-techs">
-              <span class="tech-badge">C#</span>
-              <span class="tech-badge">Unity</span>
-            </div>
-            <a href="https://github.com/zelttrox/auraria" target="_blank" class="button project-btn">
-              Voir sur GitHub
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card-body">
-            <h3 class="project-title">Mirror Mode</h3>
-            <p class="project-desc">Plug-in Hyprland pour facilement switch entre l'écran en mode miroir et le double
-              écran.</p>
-            <div class="project-techs">
-              <span class="tech-badge">Go</span>
-              <span class="tech-badge">Hyprland</span>
-            </div>
-            <a href="https://github.com/zelttrox/mirror-mode" target="_blank" class="button project-btn">
-              Voir sur GitHub
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card-body">
-            <h3 class="project-title">Valentines</h3>
-            <p class="project-desc">Petite web app hébergée sur Vercel pour souhaiter la St. Valentin à ma copine.</p>
-            <div class="project-techs">
-              <span class="tech-badge">Node.js</span>
-              <span class="tech-badge">Express</span>
-              <span class="tech-badge">Vercel</span>
-            </div>
-            <a href="https://github.com/zelttrox/valentines" target="_blank" class="button project-btn">
-              Voir sur GitHub
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card-body">
-            <h3 class="project-title">Weather Now</h3>
-            <p class="project-desc">Web app en React pour voir la météo actuelle en fonction de la localisation en
-              utilisant l'API OpenWeather.</p>
-            <div class="project-techs">
-              <span class="tech-badge">React</span>
-              <span class="tech-badge">JavaScript</span>
-              <span class="tech-badge">API</span>
-            </div>
-            <a href="https://github.com/zelttrox/weather-now" target="_blank" class="button project-btn">
-              Voir sur GitHub
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card-body">
-            <h3 class="project-title">Student Manager</h3>
-            <p class="project-desc">API Java avec endpoints pour gérer des étudiants et des cours.</p>
-            <div class="project-techs">
-              <span class="tech-badge">SpringBoot</span>
-              <span class="tech-badge">API</span>
-            </div>
-            <a href="https://github.com/zelttrox/student-manager" target="_blank" class="button project-btn">
-              Voir sur GitHub
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card-body">
-            <h3 class="project-title">Hangman Web</h3>
-            <p class="project-desc">Site web en Go de jeu du pendu avec un thème League of Legends.</p>
-            <div class="project-techs">
-              <span class="tech-badge">Go web</span>
-            </div>
-            <a href="https://github.com/zelttrox/hangman-web" target="_blank" class="button project-btn">
-              Voir sur GitHub
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card-body">
-            <h3 class="project-title">Foop</h3>
-            <p class="project-desc">Début de nouveau langage de programmation compilé en C++.</p>
-            <div class="project-techs">
-              <span class="tech-badge">C</span>
-              <span class="tech-badge">C++</span>
-            </div>
-            <a href="https://github.com/zelttrox/foop" target="_blank" class="button project-btn">
-              Voir sur GitHub
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
       </div>
     </section>
-
   </main>
 
   <%- include('../static/components/footer', {}) %>
 
-    <script src="scripts/particles.js"></script>
+  <script src="scripts/fetch.js"></script>
+  <script src="scripts/projects-carousel.js" defer></script>
 
 </body>
 

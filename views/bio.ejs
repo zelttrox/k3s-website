@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Enzo Granana — Parcours : du développement back-end vers l'infrastructure, le réseau et le DevOps.">
+  <title>Enzo Granana - À propos</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="css/background.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header>
+    <%- include('../static/components/navbar', {}) %>
+  </header>
+
+  <main>
+    <section class="bio-page">
+      <h1 class="bio-page-title">À propos de <span class="intro-title-gradient">moi</span></h1>
+      <p class="bio-page-text">Je suis un étudiant à l'origine passionné par le développement back-end, mais l'IA a fait évoluer le métier en quelque chose que j'aime beaucoup moins, c'est ce qui m'a fait me tourner vers l'infra et le réseaux l'année dernière. Et depuis, j'ai découvert un monde que j'aime encore plus que le développement !</p>
+      <p class="bio-page-text">J'adore mettre en place des infrastructures sur du cloud qui puissent être scalables et sécurisées, mais aussi l'automatisation, le devops, l'IaC... et surtout j'adore découvrir et apprendre de nouvelles technologies et de nouvelles compétences !</p>
+      <p class="bio-page-text">Je passe beaucoup de temps à travailler sur mes projets personnels ou pour apprendre de nouvelles choses ! Sinon, je fais aussi un peu de sport, je fais du badmintion en club (Sunsud) 2 fois par semaine et de temps en temps de longues sorties en vélo le weekend !</p>
+      <p class="bio-page-text">Je suis quelqu'un de très ouvert et sociable :)</p>
+    </section>
+  </main>
+
+  <%- include('../static/components/footer', {}) %>
+
+  <script src="scripts/fetch.js"></script>
+
+</body>
+
+</html>

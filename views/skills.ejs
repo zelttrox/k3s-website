@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Enzo Granana — Compétences techniques : système & réseaux, virtualisation & cloud, devops & développement.">
+  <title>Enzo Granana - Compétences</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="css/background.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header>
+    <%- include('../static/components/navbar', {}) %>
+  </header>
+
+  <main>
+    <section class="skills">
+      <div class="skills-inner">
+        <h2 class="skills-title">Mes <span class="accent">compétences</span></h2>
+        <div class="skills-grid">
+
+          <div class="skills-column">
+            <h3 class="skills-category">Système & réseaux</h3>
+            <div class="skill-card">
+              <span class="skill-name">Linux</span>
+              <span class="skill-sub">Ubuntu · Fedora · Arch</span>
+            </div>
+            <div class="skill-card">
+              <span class="skill-name">Windows server</span>
+              <span class="skill-sub">AD · DNS</span>
+            </div>
+            <div class="skill-card">
+              <span class="skill-name">Linux serveur</span>
+              <span class="skill-sub">Ubuntu · Rocky · Debian</span>
+            </div>
+            <div class="skill-card">
+              <span class="skill-name">Pare-feu</span>
+              <span class="skill-sub">pfSense · ufw · Iptables</span>
+            </div>
+            <div class="skill-card">
+              <span class="skill-name">Configs réseau</span>
+              <span class="skill-sub">TCP/IP · VLAN</span>
+            </div>
+            <div class="skill-card">
+              <span class="skill-name">SSH</span>
+              <span class="skill-sub">Tunnel · configs</span>
+            </div>
+            <div class="skill-card">
+              <span class="skill-name">Nginx</span>
+              <span class="skill-sub">Reverse proxy · Load-balancing · web</span>
+            </div>
+          </div>
+
+          <div class="skills-column">
+            <h3 class="skills-category">Virtualisation & Cloud</h3>
+            <div class="skill-card">
+              <span class="skill-name">Docker</span>
+              <span class="skill-sub">Dockerfile · Docker-compose</span>
+            </div>
+            <div class="skill-card">
+              <span class="skill-name">Kubernetes</span>
+              <span class="skill-sub">K3s · K8s · Trafeik</span>
+            </div>
+            <div class="skill-card">
+              <span class="skill-name">AWS Cloud</span>
+              <span class="skill-sub">Instances · S3 Bucket</span>
+            </div>
+            <div class="skill-card">
+              <span class="skill-name">GCloud</span>
+              <span class="skill-sub">Compute Engine · Cloud Run</span>
+            </div>
+            <div class="skill-card">
+              <span class="skill-name">Azure</span>
+              <span class="skill-sub">VM · DevOps</span>
+            </div>
+            <div class="skill-card">
+              <span class="skill-name">Terraform</span>
+              <span class="skill-sub">IaC</span>
+            </div>
+            <div class="skill-card">
+              <span class="skill-name">Proxmox</span>
+              <span class="skill-sub">Homelab</span>
+            </div>
+          </div>
+
+          <div class="skills-column">
+            <h3 class="skills-category">DevOps & Développement</h3>
+            <div class="skill-card">
+              <span class="skill-name">Git/GitHub</span>
+              <span class="skill-sub">Versionning</span>
+            </div>
+            <div class="skill-card">
+              <span class="skill-name">Pipeline CI/CD</span>
+              <span class="skill-sub">GitLab · tests</span>
+            </div>
+            <div class="skill-card">
+              <span class="skill-name">Go</span>
+              <span class="skill-sub">Sockets · network</span>
+            </div>
+            <div class="skill-card">
+              <span class="skill-name">JavaScript</span>
+              <span class="skill-sub">TypeScript · Express · React</span>
+            </div>
+            <div class="skill-card">
+              <span class="skill-name">SQL</span>
+              <span class="skill-sub">PostgreSQL · requêtes</span>
+            </div>
+            <div class="skill-card">
+              <span class="skill-name">Scripting</span>
+              <span class="skill-sub">Bash · PowerShell</span>
+            </div>
+            <div class="skill-card">
+              <span class="skill-name">API REST</span>
+              <span class="skill-sub">Postman · Curl</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <%- include('../static/components/footer', {}) %>
+
+  <script src="scripts/fetch.js"></script>
+
+</body>
+
+</html>

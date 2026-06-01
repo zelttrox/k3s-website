@@ -6,6 +6,7 @@ const { createProxyMiddleware } = require("http-proxy-middleware")
 
 const github = require("./src/github")
 const kubernetes = require("./src/kubernetes")
+const projects = require("./src/projects")
 
 // Define server variables
 const server = express()
@@ -34,9 +35,26 @@ server.get("/contact", function (request, response) {
     response.render("contact", {})
 })
 
-// Projects route handler
+// Projects index route handler
 server.get("/projects", function (request, response) {
-    response.render("projects", {})
+    response.render("projects", { projects })
+})
+
+// Single project detail route handler
+server.get("/projects/:slug", function (request, response) {
+    const project = projects.find(p => p.slug === request.params.slug)
+    if (!project) return response.status(404).send("Projet introuvable")
+    response.render("project", { project })
+})
+
+// Bio route handler
+server.get("/bio", function (request, response) {
+    response.render("bio", {})
+})
+
+// Skills route handler
+server.get("/skills", function (request, response) {
+    response.render("skills", {})
 })
 
 // GitHub contributions API
