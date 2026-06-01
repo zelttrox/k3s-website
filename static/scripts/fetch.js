@@ -9,17 +9,20 @@ async function StartResume() {
             headers: { 'Content-Type': 'application/json' }
         });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const { sessionId } = await response.json();
-        if (tab) tab.location.href = `/cv/${sessionId}/`;
-        else window.open(`/cv/${sessionId}/`, '_blank');
+        const { sessionId, redirect } = await response.json();
+        // When the pod limit is reached the server sends us to the classic PDF.
+        const target = redirect || `/cv/${sessionId}/`;
+        if (tab) tab.location.href = target;
+        else window.open(target, '_blank');
     } catch (err) {
         if (tab) tab.close();
         throw err;
     }
 }
 
-document.querySelectorAll('#resume-button').forEach(btn =>
-    btn.addEventListener('click', () => {
+document.querySelectorAll('.resume-trigger').forEach(btn =>
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
         const originalBg = btn.style.background;
         btn.disabled = true;
         btn.style.pointerEvents = 'none';

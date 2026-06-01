@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mentions légales du site personnel d'Enzo Granana.">
+  <title>Enzo Granana - Mentions légales</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="css/background.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header>
+    <%- include('../static/components/navbar', {}) %>
+  </header>
+
+  <main>
+    <section class="bio-page">
+      <h1 class="bio-page-title">Mentions <span class="intro-title-gradient">légales</span></h1>
+
+      <div class="legal-section">
+        <h2 class="legal-heading">Éditeur du site</h2>
+        <p class="bio-page-text">
+          Ce site personnel est édité par Enzo Granana, étudiant en Bachelor Infrastructure & Réseaux à Ynov.<br>
+          Contact : <a href="mailto:enzo.granana@ynov.com">enzo.granana@ynov.com</a> — 07 83 79 77 05
+        </p>
+      </div>
+
+      <div class="legal-section">
+        <h2 class="legal-heading">Directeur de la publication</h2>
+        <p class="bio-page-text">Enzo Granana.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2 class="legal-heading">Hébergement</h2>
+        <p class="bio-page-text">
+          Le site est auto-hébergé sur une infrastructure Kubernetes (K3s) administrée par l'éditeur.
+          Pour toute question relative à l'hébergement, contactez l'éditeur à l'adresse ci-dessus.
+        </p>
+      </div>
+
+      <div class="legal-section">
+        <h2 class="legal-heading">Propriété intellectuelle</h2>
+        <p class="bio-page-text">
+          L'ensemble des contenus présents sur ce site (textes, images, code, design) est, sauf mention contraire,
+          la propriété de l'éditeur. Le code source est disponible publiquement sur
+          <a href="https://github.com/zelttrox/website" target="_blank">GitHub</a>. Toute reproduction ou
+          réutilisation sans autorisation est interdite.
+        </p>
+      </div>
+
+      <div class="legal-section">
+        <h2 class="legal-heading">Données personnelles</h2>
+        <p class="bio-page-text">
+          Les informations transmises via le formulaire de contact ne sont utilisées que pour répondre à votre
+          demande et ne sont ni cédées ni revendues à des tiers. Conformément au RGPD, vous disposez d'un droit
+          d'accès, de rectification et de suppression de vos données en écrivant à
+          <a href="mailto:enzo.granana@ynov.com">enzo.granana@ynov.com</a>.
+        </p>
+      </div>
+
+      <div class="legal-section">
+        <h2 class="legal-heading">Cookies</h2>
+        <p class="bio-page-text">
+          Ce site n'utilise pas de cookies de suivi ni d'outils de mesure d'audience tiers.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <%- include('../static/components/footer', {}) %>
+
+  <script src="scripts/fetch.js"></script>
+
+</body>
+
+</html>

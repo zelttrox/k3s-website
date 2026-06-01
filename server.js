@@ -57,6 +57,11 @@ server.get("/skills", function (request, response) {
     response.render("skills", {})
 })
 
+// Legal notice route handler
+server.get("/mentions-legales", function (request, response) {
+    response.render("mentions-legales", {})
+})
+
 // GitHub contributions API
 server.get("/api/github", async function (request, response) {
     try {
@@ -110,7 +115,7 @@ server.use('/cv/:sessionId', resolveSession, createProxyMiddleware({
 // Start K3s resume pod if < 15
 server.post("/api/cv/start", async (req, res) => {
     if (await kubernetes.CountResumePods() >= 15) {
-        server.response.redirect("/cv/pdf"); 
+        res.json({ redirect: "/cv/pdf" });
         return;
     }
     const {sessionId, podIP} = await kubernetes.CreateJob();
