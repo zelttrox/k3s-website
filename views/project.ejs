@@ -28,14 +28,6 @@
           <h1 class="project-page-title"><%= project.title %></h1>
         </header>
 
-        <% if (project.images && project.images.length > 0) { %>
-          <div class="project-page-images">
-            <% project.images.forEach(function (img) { %>
-              <img src="<%= img %>" alt="<%= project.title %>">
-            <% }) %>
-          </div>
-        <% } %>
-
         <section class="project-page-section">
           <h2 class="project-page-section-title">Description</h2>
           <p class="project-page-text"><%= project.description %></p>
@@ -49,6 +41,26 @@
             <% }) %>
           </div>
         </section>
+
+        <% if ((project.medias && project.medias.length > 0) || (project.images && project.images.length > 0)) { %>
+          <section class="project-page-section">
+            <h2 class="project-page-section-title">Medias</h2>
+            <div class="project-page-medias">
+              <% (project.images || []).forEach(function (img) { %>
+                <img class="project-page-media" src="<%= img %>" alt="<%= project.title %> — média">
+              <% }) %>
+              <% (project.medias || []).forEach(function (media) { %>
+                <% if (/\.(mp4|webm|ogg)$/i.test(media)) { %>
+                  <video class="project-page-media" autoplay loop muted playsinline preload="auto">
+                    <source src="<%= media %>">
+                  </video>
+                <% } else { %>
+                  <img class="project-page-media" src="<%= media %>" alt="<%= project.title %> — média">
+                <% } %>
+              <% }) %>
+            </div>
+          </section>
+        <% } %>
 
         <section class="project-page-section">
           <h2 class="project-page-section-title">Contexte</h2>

@@ -8,6 +8,7 @@ module.exports = [
         context: `J'ai réalisé ce projet pour deux raisons, déjà pour mes étudiants de BTS durant mon stage de mentorat, mais aussi pour apprendre Docker en profondeur. L'idée de ce logiciel c'était vraiment d'avoir un outil d'apprentissage du réseaux sans avoir besoin de logiciel de virtualisation comme VirtualBox, télécharger un iso c'est long, l'installer à chaque fois sur la VM aussi, je voulais vraiment avoir quelque chose de rapide et efficace qui permet aux étudiants d'avoir quelque chose qui fonctionne à tous les coups pour apprendre.`,
         rex: `Je suis plutôt content de l'avancement du projet jusqu'au MVP, j'ai un logiciel cli qui fonctionne et qui est basé à 100% sur le moteur Docker Engine, j'ai eu beaucoup de bugs durant le développement, notamment des bugs assez atypiques comme les collisions de shell virtuelles.. mais ça m'a vraiment permis de progresser, déjà évidemment sur Docker, je maîtrise toutes les commandes essentielles et aussi le client Dockerode pour Node.js, mais j'ai aussi progresser en logique et en architecture de code. Et en y repensant, si je devais refaire le projet en partant de 0 je l'aurai peut être plutôt fait en Go, ce serait plus adapté pour un projet de ce type surtout en sachant que Docker est codé en Go.`,
         github: "https://github.com/zelttrox/vlab",
+        medias: ["/videos/vlab.gif"],
         images: [],
     },
     {
@@ -19,6 +20,7 @@ module.exports = [
         context: `J'ai commencé ce projet peu de temps après avoir découvert le Cobol en regardant un podcast de la chaîne Underscore_ de Micode, je me suis rendu compte qu'il y avait un vrai besoin dans ce milieu puisque les développeurs Cobol se font de plus en plus rare, mais que le besoin est toujours car plus de 50% du code des banques est toujours en Cobol. C'est ça qui m'a donné l'idée de créer une sorte de "bridge", un langage plus moderne et plus simple que le Cobol, mais avec un moteur de conversion en Cobol classique. Ce qui permet déjà aux étudiants d'apprendre un langage beaucoup plus simple et moderne que le Cobol 2002, mais ça permet aussi aux entreprises d'avoir des développeurs qui codent dans un langage moderne, sans avoir à migrer toute la codebase en Neo Cobol puisqu'il y a un convertisseur en Cobol classique.`,
         rex: `Ce projet est sans doute celui qui m'a largement fait le plus progresser en terme de logique de code, en logique syntaxique etc, j'ai refait le projet 3 fois pour avoir le programme le plus optimisé et avec la meilleure architecture. Et puis créer un nouveau langage de programmation ce n'est pas rien ça demande du temps et beaucoup de réfléxion, et pour un langage comme le Cobol, à l'époque même les IA n'aident pas beaucoup car c'est un langage peu documenté donc elles font beaucoup d'erreurs, ça m'a poussé à acheter le livre "Mastering COBOL Programming" de William Smith qui m'a beaucoup aidé pour le développement du projet et les choix syntaxiques de Neo Cobol. Malheureusement j'en suis arrivé à un stade où je me suis rendu compte que c'était pratiquement impossible d'aller plus loin pour le moteur de conversion, car le Cobol est beaucoup trop compliqué et ancien pour être modernisé, notamment pour la logique pure de code comme les boucles où les conditions, j'ai donc décidé de laisser le projet de côté. Mais je suis quand même très content d'en être arrivé jusque là, d'avoir obtenu un programme fonctionnel et d'avoir autant progressé en code.`,
         github: "https://github.com/zelttrox/neo-cobol",
+        medias: ["/videos/neo-cobol_edited.mp4"],
         images: [],
     },
     {
@@ -30,6 +32,7 @@ module.exports = [
         context: `J'ai créé ce site web pour plusieurs raisons, déjà pour me démarquer des autres candidats pour ma recherche d'alternance, en faisant aussi une carte de visite imprimée, mais aussi pour approfondir mon apprentissage de Kubernetes et du cloud de Google. L'idée derrière c'était qu'une personne du milieu dans la tech qui va sur mon site web puisse lire mon CV et en même temps voir mes compétences en infra/cloud. Dans le futur, j'aimerai aussi implémenter une pipeline CI/CD pour mon site web pour automatiser la mise en prod.`,
         rex: `Je suis très content du rendu v2 du site web, j'ai passé beaucoup de temps à le faire et à écrire tous les textes, et surtout mettre en place le node Kubernetes derrière et relier mon site web à l'API K3s. Mais ça en valait largement le coup.`,
         github: "https://github.com/zelttrox/k3s-website",
+        medias: ["/videos/cloud-k3s_edited.mp4"],
         images: [],
     },
     {
@@ -41,6 +44,7 @@ module.exports = [
         context: `Nous avons eu un cours de Windows Server, et comme tous les étudiants ont dû télécharger l'iso Windows en même temps, la connexion ramait et ça nous a pris une heure. C'est ce qui m'a donné cette idée : pourquoi pas faire un logiciel de transfert de fichier en connexion directe ? Faire en sorte que deux appareils sur le même réseau puissent passer par celui-ci pour se transférer des données, sans passer par un serveur externe, un peu comme le Air Drop de iOS.`,
         rex: `J'ai beaucoup réfléchi à l'architecture et l'optimisation du code avant de commencer, et au final j'ai un projet fonctionnel que je trouve personnellement assez bien réalisé, je suis content de mon choix de langage car il est très adapté pour ce cas d'utilisation, j'ai même pu mettre la release v0.1 sur le AUR de Arch, donc n'importe qui peut le télécharger sur son Arch Linux avec "yay -S peer-to-peer" ! (I use Arch btw).`,
         github: "https://github.com/zelttrox/peer-to-peer",
+        medias: ["/videos/peer-to-peer_edited.mp4"],
         images: [],
     },
     {
@@ -52,6 +56,7 @@ module.exports = [
         context: `Nous avons dû réaliser ce projet en groupes de 3 dans le cadre du "Projet Fil Rouge", qui correspond à notre projet annuel à Ynov. Le but étant de créer une infrastructure complète et un site web pour une agence fictive "Y-Plaza" (nous l'avons renommée), c'est une agence avec 12 sites partout en France, qui voulaient une infra sur l'agence siège de Aix-en-Provence, et que toutes les autres agences puissent se connecter par tunnel VPN à l'AD, et au back-office du site web.`,
         rex: `J'étais avec mes camarades de toujours Keo PLOYER et Romain VICENTE pour ce projet, et je suis très content du résultat final, c'est clairement un de nos projets les plus travaillés, on s'est bien organisé dès le début avec un Trello, une page Notion et une bonne répartition des tâches. On a pu faire un site web professionnel, avec un Windows AD, un VPN, un pare-feu/Gateway, et une base de données. Tout ça fait main et hébergé sur des VMs Azure !`,
         github: "https://github.com/Pl0um/y-plaza",
+        medias: ["/videos/kre-agency_edited.mp4"],
         images: [],
     },
     {
@@ -63,7 +68,7 @@ module.exports = [
         context: `Ce projet a été réalisé en groupes de 2 dans le cadre du "Projet Yboost", qui est aussi un projet annuel mais uniquement pour la spécialité Dev. Nous aviosn pour but de mettre en place une infrastructure sécurisée, optimisée et scalable pour héberger un site web CMS type WordPress.`,
         rex: `Pour ce projet j'étais avec mon camarde de spé Dev Léo COLLOWALD, on a vraiment fait du bon travail pour ce projet. Pour le CMS, on a préféré partir sur une techno un peu plus moderne que quelque chose comme Wordpress, on a donc trouvé Strapi, qui utilise PostgreSQL, ce qui corrélait avec notre choix de base de données Supabase, on est donc partis sur ça. Pour la partie disponibilité, on a mis en place un load-balancer Nginx entre plusieurs serveurs web, et pour la partie scalabilité, nous avons choisi de conteneuriser les web apps Strapi avec Docker, pour qu'on puisse directement redéployer un conteneur sur une nouvelle VM pour une montée en charge.`,
         github: "https://github.com/zelttrox/cloud-cms",
-        images: [],
+        images: ["/images/projects/cloud-cms.png"],
     },
     {
         slug: "infra-vpn",
@@ -74,6 +79,7 @@ module.exports = [
         context: `Ce projet a été réalisé en groupes de 2, à nouveau dans le cadre du "Projet Fil Rouge" mais cette fois durant ma 1ère année à Ynov. Nous avions pour but de mettre en place un VPN sur une machine virtuelle hébergée sur Azure.`,
         rex: `C'était la première fois qu'on utilisait Azure ainsi que Wireguard, mais je suis plutôt satisfait de ce qu'on a pu produire avec mon camarde Romain VICENTE. On a mis en place évidemment le VPN, mais aussi un mini logiciel fait en Python avec Tkinter pour activer le VPN, mais aussi des petits scripts d'installation. Pour un projet de 1ère année c'était plutôt bien !`,
         github: "https://github.com/zelttrox/infra-vpn",
+        medias: ["/videos/infra-vpn.mp4"],
         images: [],
     },
     {
@@ -85,7 +91,7 @@ module.exports = [
         context: `J'ai réalisé ce projet durant ma première année de Bachelor à Ynov, j'avais pour but d'essayer de refaire un site web un peu comme Spotify pour répertorier des artistes, écouter de la musique, faire des playlists etc... Évidemment le but n'était pas de remplacer Spotify, mon seul but était d'apprendre en profondeur comment fonctionne un site web à plus grande échelle, avec des routes, un API, une base de données, etc... Mais aussi apprendre la conteneurisation avec Docker.`,
         rex: `Je n'ai pas du tout terminé ce projet car j'ai estimé que j'avais assez avancé le site pour apprendre ce que je voulais apprendre, j'ai fait tout le système de routes, l'upload de musiques, le système d'authification connecté à la base de données, la page admin, tout ça conteneurisé avec Docker, j'étais plutôt content de tout ce que j'ai pu apprendre pendant ce projet, ça m'a occupé pendant quelques mois.`,
         github: "https://github.com/zelttrox/music-app",
-        images: [],
+        images: ["/images/projects/music-app.png"],
     },
     {
         slug: "chatgpt-cli",
@@ -96,7 +102,7 @@ module.exports = [
         context: `J'ai réalisé ce projet car je voulais intégrer une IA directement dans mon terminal pour m'aider quand j'avais des problèmes sur mon OS Arch Linux, comme je suis sous Hyprland ça arrive souvent malheureusement… J'ai donc mis 5€ de crédits sur OpenAI et j'ai utilisé leur API pour communiquer avec le modèle gpt-3.5-turbo depuis mon terminal.`,
         rex: `C'était un tout petit projet, avec un code qui fait une cinquantaine de lignes, mais je suis quand même plutôt content du résultat, c'est bien plus rapide que de lancer Chrome, aller sur ChatGPT, ouvrir un chat… Là au moins j'avais quelque chose de rapide !`,
         github: "https://github.com/zelttrox/chatgpt-cli",
-        images: [],
+        images: ["/images/chatgpt-cli.png"],
     },
     {
         slug: "multi-cloud",
@@ -118,6 +124,7 @@ module.exports = [
         context: `Ce projet correspond à un module de notre première année à Ynov le module "Groupie Tracker". L'objectif était de réaliser en groupes de 2 ou 3 un site web en Go qui permet d'afficher des données sur des artistes musicaux, en important les données grâce à un API.`,
         rex: `J'ai fait ce projet avec mon duo de toujours Charleen BEHERAY (qui a quitté mon école malheureusement…), on a pu apprendre beaucoup de notions clés en développement durant ce projet, notamment les routes web, les regex, la POO, et évidemment les API. Je suis assez content du résultat final du projet.`,
         github: "https://github.com/zelttrox/groupie-tracker",
+        medias: ["/videos/groupie_tracker_edited.mp4"],
         images: [],
     },
     {
@@ -140,6 +147,7 @@ module.exports = [
         context: `Ce projet est le tout premier projet qu'on a eu à faire en arrivant à Ynov. L'objectif était de partir d'une base de jeu (avec tout une architecture de code et des objets), et de faire un jeu 2D type RPG en groupes de 3 à 4.`,
         rex: `J'ai réalisé ce projet avec Charleen BEHERAY, Romain VICENTE et Léo CARON, et honnêtement même aujourd'hui je suis super content de ce qu'on a pu créer à 4 sans IA, sans connaître Git (on s'envoyait les codes par mail), et avec très peu de notions du code. Nous avons quand même réussi à avoir le meilleur projet de la promo, et à ce jour notre projet et toujours présenté lors des JPO de l'école.`,
         github: "https://github.com/zelttrox/arcatia",
+        medias: ["/videos/arcatia_edited.mp4"],
         images: [],
     },
     {
@@ -151,7 +159,7 @@ module.exports = [
         context: `Comme toute personne qui a joué aux jeux vidéos toute son enfance, j'ai eu un jour envie de créer mon propre jeu vidéo, alors j'ai essayé de le faire, je voulais créer un jeu Open World 3D sur une planète alien (très ambitieux pour un 1er jeu à faire seul).`,
         rex: `Je n'ai évidemment pas fini le jeu, mais c'est vraiment ce projet qui m'a fait aimer le code et qui m'a donné envie d'en faire ma future carrière, et puis j'ai aussi pu créer tout un écosystème pour la planète alien, même si ce n'est que théorique. J'ai quand même un début de jeu plutôt sympa, ça m'a fait découvrir Unity et toutes ses fonctionnalités.`,
         github: "https://github.com/zelttrox/auraria",
-        images: [],
+        images: ["/images/projects/auraria.png"],
     },
     {
         slug: "mirror-mode",
@@ -173,6 +181,7 @@ module.exports = [
         context: `Je voulais faire quelque chose qui me ressemble pour souhaiter la St Valentin à ma copine, et j'ai vu passer des réels de web apps de ce style dans mon feed Instagram, alors je me suis dit pourquoi pas en faire une aussi !`,
         rex: `Je n'ai pas appris grand chose niveau code, par contre j'ai appris à utiliser Vercel pour héberger des petits sites vitrines/statiques !`,
         github: "https://github.com/zelttrox/valentines",
+        medias: ["/videos/valentines_edited.mp4"],
         images: [],
     },
     {
@@ -195,6 +204,6 @@ module.exports = [
         context: `Dans le cadre du module "POO" de notre première année à Ynov, nous devions réaliser une API pour gérer des étudiants dans le langage qu'on veut. J'ai donc choisi Java car c'est ce qu'on était en train d'apprendre dans une autre matière.`,
         rex: `Je suis plutôt content de mon API, même si c'est un projet très basique, j'ai essayé de faire quelque chose de très propre en terme d'architecture et de code, tout est structuré et bien commenté.`,
         github: "https://github.com/zelttrox/student-manager",
-        images: [],
+        images: ["/images/projects/student-manager.png"],
     },
 ]
