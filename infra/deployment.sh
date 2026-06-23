@@ -18,7 +18,8 @@ sudo docker system prune -a -f
 sudo docker build -t website:latest .
 sudo docker save website:latest | sudo k3s ctr -n k8s.io images import -
 sudo docker image rm website:latest
-cd resume && sudo docker save resume:latest | sudo k3s ctr -n k8s.io images import - && cd ..
+cd resume && sudo docker build -t resume:latest .
+sudo docker save resume:latest | sudo k3s ctr -n k8s.io images import - && cd ..
 sudo docker image rm resume:latest
 sudo docker builder prune -af
 
