@@ -1,4 +1,4 @@
-# Portfolio — enzo-granana.com (v1)
+# Portfolio — enzo-granana.com (v2)
 
 Site portfolio personnel hébergé sur Google Cloud, combinant un site vitrine statique servi par Docker et un mécanisme de CV interactif à la demande basé sur Kubernetes (K3s).
 
