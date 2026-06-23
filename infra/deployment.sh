@@ -2,8 +2,10 @@
 
 set -e
 
+echo -e "\033[1;33mSTARTING DEPLOYMENT SCRIPT\033[0m"
+
 # Pull latest changes
-git pull
+sudo git pull
 
 # Remove old k3s pods and docker images
 sudo kubectl delete pods -l app=website
@@ -16,6 +18,8 @@ sudo docker system prune -a -f
 sudo docker build -t website:latest .
 sudo docker save website:latest | sudo k3s ctr -n k8s.io images import -
 sudo docker image rm website:latest
+cd resume && sudo docker save resume:latest | sudo k3s ctr -n k8s.io images import - && cd ..
+sudo docker image rm resume:latest
 sudo docker builder prune -af
 
 # Deploy k3s pods and service
