@@ -1269,7 +1269,7 @@ nav {
 }
 
 
-/* SKILLS */
+/* SKILLS (used by the standalone /skills page) */
 .skills {
     background: rgba(16, 24, 20, 0.55);
     backdrop-filter: blur(6px);
@@ -1374,6 +1374,113 @@ nav {
     }
 
     .skills-title {
+        font-size: 1.7rem;
+    }
+}
+
+
+/* TECHNOLOGIES */
+.tech-section {
+    background: rgba(16, 24, 20, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-top: 1px solid rgba(74, 178, 128, 0.15);
+    border-bottom: 1px solid rgba(74, 178, 128, 0.15);
+    padding: 4rem 2rem;
+}
+
+.tech-inner {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.tech-title {
+    font-family: 'Lexend', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin: 0 0 0.8rem;
+    text-align: center;
+}
+
+.tech-subtitle {
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.55);
+    max-width: 540px;
+    margin: 0 auto 2.4rem;
+    text-align: center;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+}
+
+@media (min-width: 640px) {
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .tech-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.tech-card {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.9rem;
+    min-height: 0;
+    padding: 1rem;
+}
+
+.tech-icon-chip {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 0.6rem;
+    background: rgba(78, 196, 139, 0.1);
+    border: 1px solid rgba(74, 178, 128, 0.2);
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.tech-card:hover .tech-icon-chip {
+    background: rgba(78, 196, 139, 0.18);
+    border-color: rgba(74, 178, 128, 0.4);
+}
+
+.tech-icon {
+    width: 1.4rem;
+    height: 1.4rem;
+    color: var(--accent-color);
+}
+
+.tech-name {
+    font-family: 'Lexend', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+}
+
+.tech-desc {
+    font-family: 'Courier New', monospace;
+    font-size: 0.76rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0.15rem 0 0;
+}
+
+@media (max-width: 768px) {
+    .tech-title {
         font-size: 1.7rem;
     }
 }
@@ -1667,7 +1774,7 @@ nav {
     border-radius: inherit;
 }
 
-.projects-page-grid .glow-card .project-link {
+.glow-card .project-link {
     position: relative;
     z-index: 2;
     align-self: flex-start;
